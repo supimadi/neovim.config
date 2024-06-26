@@ -1,7 +1,7 @@
 return {
-  "olrtg/nvim-emmet",
+  "mattn/emmet-vim",
   config = function()
-    vim.keymap.set({ "n", "v" }, '<space>xe', require('nvim-emmet').wrap_with_abbreviation)
+	  vim.g.user_emmet_leader_key = '<C-L>'
   end,
 }
 
