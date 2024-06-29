@@ -1,7 +1,7 @@
 return {
   "mattn/emmet-vim",
   config = function()
-	  vim.g.user_emmet_leader_key = '<C-L>'
+	  vim.g['user_emmet_leader_key'] = '<C-L>'
   end,
 }
 

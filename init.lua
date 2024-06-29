@@ -11,6 +11,8 @@ vim.opt.ignorecase = true
 vim.opt.smartcase = true
 vim.opt.gdefault = true
 
+vim.opt.termguicolors = true
+
 vim.opt.updatetime = 100
 
 -- set tabs
@@ -18,6 +20,9 @@ vim.opt.ts = 4
 vim.opt.sw = 4
 vim.opt.tabstop = 4
 vim.opt.shiftwidth = 4
+
+-- emmet setting
+vim.g.user_emmet_leader_key = '<C-L>'
 
 -- windows split 
 vim.keymap.set("n", "<space>wv", ':vsplit<CR>', opts)
