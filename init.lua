@@ -15,6 +15,8 @@ vim.opt.termguicolors = true
 
 vim.opt.updatetime = 100
 
+vim.g.python3_host_prog = 'C:\\Users\\ASUS\\.pyenv\\pyenv-win\\versions\\3.9.13'
+
 -- set tabs
 vim.opt.ts = 4
 vim.opt.sw = 4
