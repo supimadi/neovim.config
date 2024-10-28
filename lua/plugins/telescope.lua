@@ -18,6 +18,6 @@ return {
 	-- Set keymaps
 	vim.keymap.set('n', '<space><space>', builtin.find_files, {})
 	vim.keymap.set('n', '<space>wb', builtin.buffers, {})
-	vim.keymap.set("n", "<leader>fg", ":lua require('telescope').extensions.live_grep_args.live_grep_args()<CR>")
+	vim.keymap.set("n", "<space>fg", ":lua require('telescope').extensions.live_grep_args.live_grep_args()<CR>")
     end,
 }
