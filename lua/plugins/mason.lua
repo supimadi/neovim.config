@@ -14,8 +14,8 @@ return {
                 "eslint",
                 "html",
                 "jsonls",
-                "tsserver",
-                "pyright",
+                "typescript-language-server",
+				"basedpyright",
                 "tailwindcss",
             },
         })

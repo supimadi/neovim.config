@@ -32,8 +32,8 @@ return {
                     capabilities = capabilities,
                 })
             end,
-            ["tsserver"] = function()
-                nvim_lsp["tsserver"].setup({
+            ["typescript-language-server"] = function()
+                nvim_lsp["typescript-language-server"].setup({
                     on_attach = on_attach,
                     capabilities = capabilities,
                 })
@@ -68,10 +68,15 @@ return {
                     capabilities = capabilities,
                 })
             end,
-            ["pyright"] = function()
-                nvim_lsp["pyright"].setup({
+			["basedpyright"] = function()
+                nvim_lsp["basedpyright"].setup({
                     on_attach = on_attach,
                     capabilities = capabilities,
+					settings = {
+						basedpyright = {
+							typeCheckingMode = "standard",
+						}
+					}
                 })
             end,
         })
