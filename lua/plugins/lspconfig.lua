@@ -32,12 +32,6 @@ return {
                     capabilities = capabilities,
                 })
             end,
-            ["typescript-language-server"] = function()
-                nvim_lsp["typescript-language-server"].setup({
-                    on_attach = on_attach,
-                    capabilities = capabilities,
-                })
-            end,
             ["cssls"] = function()
                 nvim_lsp["cssls"].setup({
                     on_attach = on_attach,
@@ -63,6 +57,12 @@ return {
                 })
             end,
             ["eslint"] = function()
+                nvim_lsp["eslint"].setup({
+                    on_attach = on_attach,
+                    capabilities = capabilities,
+                })
+            end,
+            ["biome"] = function()
                 nvim_lsp["eslint"].setup({
                     on_attach = on_attach,
                     capabilities = capabilities,
