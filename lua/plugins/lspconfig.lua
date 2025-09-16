@@ -3,7 +3,7 @@ return {
     event = { "BufReadPre", "BufNewFile" },
     dependencies = {
         "hrsh7th/cmp-nvim-lsp",
-        { "folke/neodev.nvim", opts = {} },
+        { "folke/lazydev.nvim", opts = {} },
     },
     config = function()
         local nvim_lsp = require("lspconfig")
@@ -24,7 +24,15 @@ return {
             end
         end
 
-        local capabilities = require("cmp_nvim_lsp").default_capabilities()
+        -- local capabilities = require("cmap_nvim_lsp.cmp").default_capabilities()
+        local capabilities = require("blink.cmp").get_lsp_capabilities()
+
+		vim.diagnostic.config({
+			virtual_lines = {
+				current_line = true,
+			},
+		})
+
 
         mason_lspconfig.setup_handlers({
             function(server)

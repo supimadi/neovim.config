@@ -19,5 +19,14 @@ return {
 	vim.keymap.set('n', '<space><space>', builtin.find_files, {})
 	vim.keymap.set('n', '<space>wb', builtin.buffers, {})
 	vim.keymap.set("n", "<space>fg", ":lua require('telescope').extensions.live_grep_args.live_grep_args()<CR>")
+	
+	telescope.setup({
+		pickers = {
+			find_files = {
+				-- `hidden = true` will still show the inside of `.git/` as it's not `.gitignore`d.
+				find_command = { "rg", "--files", "--glob", "!**/venv/*" },
+			},
+		},
+	})
     end,
 }
