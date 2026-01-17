@@ -6,10 +6,10 @@ return {
         { "folke/lazydev.nvim", opts = {} },
     },
     config = function()
-        local nvim_lsp = require("lspconfig")
+        -- local nvim_lsp = require("lspconfig")
+    	
+		require("mason").setup()
         local mason_lspconfig = require("mason-lspconfig")
-
-        local protocol = require("vim.lsp.protocol")
 
         local on_attach = function(client, bufnr)
             -- format on save
@@ -24,8 +24,12 @@ return {
             end
         end
 
-        -- local capabilities = require("cmap_nvim_lsp.cmp").default_capabilities()
         local capabilities = require("blink.cmp").get_lsp_capabilities()
+
+		mason_lspconfig.setup {
+			ensure_installed = {"basedpyright", "html", "eslint", "biome"},
+			automatic_enable = true,
+		}
 
 		vim.diagnostic.config({
 			virtual_lines = {
@@ -33,60 +37,20 @@ return {
 			},
 		})
 
+		vim.lsp.config('*', {
+			capabilities = capabilities,
+		})
+		vim.lsp.config("basedpyright", {
+			settings = {
+				basedpyright = {
+					typeCheckingMode = "standard",
+				}
+			},
+		})
 
-        mason_lspconfig.setup_handlers({
-            function(server)
-                nvim_lsp[server].setup({
-                    capabilities = capabilities,
-                })
-            end,
-            ["cssls"] = function()
-                nvim_lsp["cssls"].setup({
-                    on_attach = on_attach,
-                    capabilities = capabilities,
-                })
-            end,
-            ["tailwindcss"] = function()
-                nvim_lsp["tailwindcss"].setup({
-                    on_attach = on_attach,
-                    capabilities = capabilities,
-                })
-            end,
-            ["html"] = function()
-                nvim_lsp["html"].setup({
-                    on_attach = on_attach,
-                    capabilities = capabilities,
-                })
-            end,
-            ["jsonls"] = function()
-                nvim_lsp["jsonls"].setup({
-                    on_attach = on_attach,
-                    capabilities = capabilities,
-                })
-            end,
-            ["eslint"] = function()
-                nvim_lsp["eslint"].setup({
-                    on_attach = on_attach,
-                    capabilities = capabilities,
-                })
-            end,
-            ["biome"] = function()
-                nvim_lsp["eslint"].setup({
-                    on_attach = on_attach,
-                    capabilities = capabilities,
-                })
-            end,
-			["basedpyright"] = function()
-                nvim_lsp["basedpyright"].setup({
-                    on_attach = on_attach,
-                    capabilities = capabilities,
-					settings = {
-						basedpyright = {
-							typeCheckingMode = "standard",
-						}
-					}
-                })
-            end,
-        })
+		vim.lsp.enable({
+			'basedpyright', 'cssls', 'html',
+			'jsonls', 'eslint', 'biome'
+		})
     end,
 }
