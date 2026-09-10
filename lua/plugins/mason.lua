@@ -1,7 +1,7 @@
 return {
-    "williamboman/mason.nvim", version = "^1.0.0",
+    "williamboman/mason.nvim",
     dependencies = {
-		{"williamboman/mason-lspconfig.nvim", version = "^1.0.0" },
+		{"williamboman/mason-lspconfig.nvim" },
         "WhoIsSethDaniel/mason-tool-installer.nvim",
     },
     config = function()
@@ -16,7 +16,6 @@ return {
                 "jsonls",
                 "biome",
 				"basedpyright",
-                "tailwindcss",
             },
         })
 

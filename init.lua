@@ -49,3 +49,6 @@ vim.keymap.set("n", "<space>ot", ':term<CR>', opts)
 
 -- open neogin
 vim.keymap.set("n", "<space>og", ':Neogit<CR>', opts)
+
+-- Nerd Tree
+vim.keymap.set("n", "<space>od", ":NERDTreeToggle<CR>", opts)

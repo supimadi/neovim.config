@@ -6,23 +6,8 @@ return {
         { "folke/lazydev.nvim", opts = {} },
     },
     config = function()
-        -- local nvim_lsp = require("lspconfig")
-    	
 		require("mason").setup()
         local mason_lspconfig = require("mason-lspconfig")
-
-        local on_attach = function(client, bufnr)
-            -- format on save
-            if client.server_capabilities.documentFormattingProvider then
-                vim.api.nvim_create_autocmd("BufWritePre", {
-                    group = vim.api.nvim_create_augroup("Format", { clear = true }),
-                    buffer = bufnr,
-                    callback = function()
-                        vim.lsp.buf.format()
-                    end,
-                })
-            end
-        end
 
         local capabilities = require("blink.cmp").get_lsp_capabilities()
 
@@ -39,6 +24,7 @@ return {
 
 		vim.lsp.config('*', {
 			capabilities = capabilities,
+			root_markers = { '.git' },
 		})
 		vim.lsp.config("basedpyright", {
 			settings = {
@@ -47,10 +33,27 @@ return {
 				}
 			},
 		})
+		vim.lsp.config("biome", {
+			capabilities = capabilities,
+			filetypes = {
+			  'astro',
+			  'css',
+			  'graphql',
+			  'javascript',
+			  'javascriptreact',
+			  'json',
+			  'jsonc',
+			  'svelte',
+			  'typescript',
+			  'typescript.tsx',
+			  'typescriptreact',
+			  'vue',
+			},
+		})
 
 		vim.lsp.enable({
 			'basedpyright', 'cssls', 'html',
-			'jsonls', 'eslint', 'biome'
+			'jsonls', 'eslint', 'biome',
 		})
     end,
 }
