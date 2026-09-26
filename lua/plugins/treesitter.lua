@@ -34,6 +34,9 @@ return {
                 "gitignore",
                 "c",
                 "rust",
+				"php",
+				"php_only",
+				"blade",
             },
             incremental_selection = {
                 enable = true,

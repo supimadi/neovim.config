@@ -1,12 +1,19 @@
 return {
   'saghen/blink.cmp',
   -- optional: provides snippets for the snippet source
-  dependencies = { 'rafamadriz/friendly-snippets' },
+  dependencies = {
+		'saghen/blink.lib',
+		'rafamadriz/friendly-snippets' 
+	},
 
   -- use a release tag to download pre-built binaries
   -- version = '1.*',
   -- AND/OR build from source, requires nightly: https://rust-lang.github.io/rustup/concepts/channels.html#working-with-nightly-rust
-  build = 'cargo build --release',
+  build = function()
+	-- build the fuzzy matcher, optionally add a timeout to `pwait(timeout_ms)`
+	-- you can use `gb` in `:Lazy` to rebuild the plugin as needed
+	require('blink.cmp').build():pwait()
+  end,
   -- If you use nix, you can build from source using latest nightly rust with:
   -- build = 'nix run .#build-plugin',
 
@@ -87,7 +94,7 @@ return {
     -- when the Rust fuzzy matcher is not available, by using `implementation = "prefer_rust"`
     --
     -- See the fuzzy documentation for more information
-    fuzzy = { implementation = "prefer_rust_with_warning" }
+    fuzzy = { implementation = "lua" }
   },
   opts_extend = { "sources.default" }
 }

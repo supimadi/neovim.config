@@ -10,6 +10,7 @@ return {
         local mason_lspconfig = require("mason-lspconfig")
 
         local capabilities = require("blink.cmp").get_lsp_capabilities()
+		local require = require('blink.lib.lazy_require')
 
 		mason_lspconfig.setup {
 			ensure_installed = {"basedpyright", "html", "eslint", "biome"},
@@ -50,10 +51,15 @@ return {
 			  'vue',
 			},
 		})
+		vim.lsp.config("intelephense", {
+			environment = {
+				phpVersion = "8.5.9",
+			},
+		})
 
 		vim.lsp.enable({
 			'basedpyright', 'cssls', 'html',
-			'jsonls', 'eslint', 'biome',
+			'jsonls', 'eslint', 'biome', "intelephense",
 		})
     end,
 }
