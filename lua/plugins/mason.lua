@@ -16,12 +16,14 @@ return {
                 "jsonls",
                 "biome",
 				"basedpyright",
+				"intelephense",
             },
         })
 
         require("mason-tool-installer").setup({
             ensure_installed = {
                 "prettier",
+				"intelephense",
                 "stylua", -- lua formatter
                 "isort", -- python formatter
                 "black", -- python formatter

@@ -1,15 +1,22 @@
 return {
     "nvim-treesitter/nvim-treesitter",
-    -- event = { "BufReadPre", "BufNewFile" },
-	lazy = false,
-	branch = 'main',
+    lazy = false,
+    branch = "main",
     build = ":TSUpdate",
     dependencies = {
         "windwp/nvim-ts-autotag",
+		"EmranMR/tree-sitter-blade",
     },
     config = function()
-        local treesitter = require("nvim-treesitter.config")
+		-- Blade config
+        vim.filetype.add({
+            pattern = {
+                [".*%.blade%.php"] = "blade",
+            },
+        })
+        vim.treesitter.language.register("blade", "blade")
 
+        local treesitter = require("nvim-treesitter.config")
         treesitter.setup({
             highlight = {
                 enable = true,
@@ -36,9 +43,9 @@ return {
                 "gitignore",
                 "c",
                 "rust",
-				"php",
-				"php_only",
-				"blade",
+                "php",
+                "php_only",
+                "blade",
             },
             incremental_selection = {
                 enable = true,
@@ -59,6 +66,13 @@ return {
                 enable = true,
                 enable_autocmd = false,
             },
+        })
+
+        vim.api.nvim_create_autocmd("FileType", {
+            pattern = { "blade", "html", "php" },
+            callback = function(args)
+                vim.treesitter.start(args.buf)
+            end,
         })
     end,
 }

@@ -13,7 +13,7 @@ return {
 		local require = require('blink.lib.lazy_require')
 
 		mason_lspconfig.setup {
-			ensure_installed = {"basedpyright", "html", "eslint", "biome"},
+    		ensure_installed = { "basedpyright", "html", "eslint", "biome", "intelephense", "emmet_ls" },
 			automatic_enable = true,
 		}
 
@@ -46,9 +46,31 @@ return {
 			  'jsonc',
 			  'svelte',
 			  'typescript',
+			  'php',
+			  'blade',
 			  'typescript.tsx',
 			  'typescriptreact',
 			  'vue',
+			},
+		})
+		vim.lsp.config("html", {
+			capabilities = capabilities,
+			filetypes = { "html", "php", "blade" },
+			init_options = {
+				configurationSection = { "html", "css", "javascript" },
+				embeddedLanguages = {
+					css = true,
+					javascript = true
+				},
+				provideFormatter = true
+			}
+		})
+		vim.filetype.add({
+			extension = {
+				blade = "blade",
+			},
+			pattern = {
+				[".*%.blade%.php"] = "blade",
 			},
 		})
 		vim.lsp.config("intelephense", {
