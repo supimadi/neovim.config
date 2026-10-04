@@ -28,7 +28,14 @@ vim.g.user_emmet_leader_key = '<C-L>'
 
 -- windows split 
 vim.keymap.set("n", "<space>wv", ':vsplit<CR>', opts)
+vim.keymap.set("n", "<space>wh", ':hsplit<CR>', opts)
 vim.keymap.set("n", "<space>ww", ':wincmd w<CR>', opts)
+
+-- Delete current buffer
+vim.keymap.set('n', '<space>bd', ':bdelete<CR>', { desc = 'Delete current buffer' })
+vim.keymap.set('n', '<space>ba', ':%bd!<CR>', { desc = 'Close all open buffer' })
+vim.keymap.set('n', '<space>bD', ':bdelete!<CR>', { desc = 'Force delete current buffer' })
+vim.keymap.set('n', '<space>bq', ':bp|bd #<CR>', { desc = 'Close buffer, keep layout' })
 
 -- opts set in a table to not repeat them everytime
 local opts = { noremap = true, silent = true }
@@ -52,3 +59,28 @@ vim.keymap.set("n", "<space>og", ':Neogit<CR>', opts)
 
 -- Nerd Tree
 vim.keymap.set("n", "<space>od", ":NERDTreeToggle<CR>", opts)
+
+
+vim.g.dashboard_custom_header = [[
+
+
+
+
+
+
+
+⣿⠟⣽⣿⣿⣿⣿⣿⢣⠟⠋⡜⠄⢸⣿⣿⡟⣬⢁⠠⠁⣤⠄⢰⠄⠇⢻⢸
+⢏⣾⣿⣿⣿⠿⣟⢁⡴⡀⡜⣠⣶⢸⣿⣿⢃⡇⠂⢁⣶⣦⣅⠈⠇⠄⢸⢸
+⣹⣿⣿⣿⡗⣾⡟⡜⣵⠃⣴⣿⣿⢸⣿⣿⢸⠘⢰⣿⣿⣿⣿⡀⢱⠄⠨⢸
+⣿⣿⣿⣿⡇⣿⢁⣾⣿⣾⣿⣿⣿⣿⣸⣿⡎⠐⠒⠚⠛⠛⠿⢧⠄⠄⢠⣼
+⣿⣿⣿⣿⠃⠿⢸⡿⠭⠭⢽⣿⣿⣿⢂⣿⠃⣤⠄⠄⠄⠄⠄⠄⠄⠄⣿⡾
+⣼⠏⣿⡏⠄⠄⢠⣤⣶⣶⣾⣿⣿⣟⣾⣾⣼⣿⠒⠄⠄⠄⡠⣴⡄⢠⣿⣵
+⣳⠄⣿⠄⠄⢣⠸⣹⣿⡟⣻⣿⣿⣿⣿⣿⣿⡿⡻⡖⠦⢤⣔⣯⡅⣼⡿⣹
+⡿⣼⢸⠄⠄⣷⣷⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣕⡜⡌⡝⡸⠙⣼⠟⢱⠏
+⡇⣿⣧⡰⡄⣿⣿⣿⣿⡿⠿⠿⠿⣿⣿⣿⣿⣿⣿⣿⣿⣷⣋⣪⣥⢠⠏⠄
+⣧⢻⣿⣷⣧⢻⣿⣿⣿⡇⠄⢀⣀⣀⡙⣿⣿⣿⣿⣿⣿⣿⣿⣿⡇⠂⠄⠄
+⢹⣼⣿⣿⣿⣧⡻⣿⣿⣇⣴⣿⣿⣿⣷⢸⣿⣿⣿⣿⣿⣿⣿⣿⣰⠄⠄⠄
+⣼⡟⡟⣿⢸⣿⣿⣝⢿⣿⣾⣿⣿⣿⢟⣾⣿⣿⣿⣿⣿⣿⣿⣿⠟⠄⡀⡀
+⣿⢰⣿⢹⢸⣿⣿⣿⣷⣝⢿⣿⣿⣿⣿⣿⣿⣿⣿⡿⠿⠛⠉⠄⠄⣸⢰⡇
+⣿⣾⣹⣏⢸⣿⣿⣿⣿⣿⣷⣍⡻⣛⣛⣛⡉⠁⠄⠄⠄⠄⠄⠄⢀⢇⡏⠄
+]]

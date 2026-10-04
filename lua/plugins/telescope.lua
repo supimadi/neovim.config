@@ -19,9 +19,14 @@ return {
 		telescope.setup({
 			defaults = {
 				preview = { treesitter = false },
+				layout_strategy='vertical',
+				layout_config = { 
+					width = 0.9,
+					height = 0.95,
+					preview_height = 0.7,
+				}
 			},
 		})
-		
 		-- telescope.setup({
 		-- 	pickers = {
 		-- 		find_files = {
