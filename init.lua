@@ -15,16 +15,29 @@ vim.opt.termguicolors = true
 
 vim.opt.updatetime = 100
 
+vim.opt.smartindent = true
+
 -- vim.g.python3_host_prog = 'C:\\Users\\ASUS\\.pyenv\\pyenv-win\\versions\\3.9.13'
+vim.opt.swapfile = false
+vim.opt.scrolloff = 8
 
 -- set tabs
 vim.opt.ts = 4
 vim.opt.sw = 4
 vim.opt.tabstop = 4
 vim.opt.shiftwidth = 4
+vim.opt.expandtab = true
 
 -- emmet setting
 vim.g.user_emmet_leader_key = '<C-L>'
+
+-- Stealed from: https://github.com/ThePrimeagen/init.lua/blob/master/lua/theprimeagen/remap.lua
+vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
+vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
+
+vim.keymap.set("n", "<space>rr", function()
+    vim.cmd("so")
+end)
 
 -- windows split 
 vim.keymap.set("n", "<space>wv", ':vsplit<CR>', opts)
