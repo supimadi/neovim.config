@@ -16,17 +16,19 @@ return {
 		vim.keymap.set('n', '<space>wb', builtin.buffers, {})
 		vim.keymap.set("n", "<space>fg", ":lua require('telescope').extensions.live_grep_args.live_grep_args()<CR>")
 
-		telescope.setup({
-			defaults = {
-				preview = { treesitter = false },
-				layout_strategy='vertical',
-				layout_config = { 
-					width = 0.9,
-					height = 0.95,
-					preview_height = 0.7,
-				}
-			},
-		})
+        telescope.setup({
+            defaults = {
+                preview = { treesitter = false },
+                layout_strategy = 'vertical',
+                layout_config = { 
+                    width = 0.9,
+                    height = 0.95,
+                    vertical = {
+                        preview_height = 0.7, -- Restrict preview_height to vertical strategy
+                    },
+                }
+            },
+        })
 		-- telescope.setup({
 		-- 	pickers = {
 		-- 		find_files = {
